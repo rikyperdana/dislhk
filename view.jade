@@ -1,0 +1,21 @@
+template(name='layout')
+    +menu
+    +yield
+
+template(name='menu')
+    nav.green: nav-wrapper
+        ul.left#topLeft
+            li: a Beranda
+        a.brand-logo.center Dinas LHK Maps
+        ul.right
+            li: a Login
+            li: a Register
+            li: a Logout
+    ul.fixed.side-nav
+        li: a Hutan Desa
+        li: a IUPHHK HA
+        li: a IUPHHK HT
+        li: a IUPHHK RE
+
+template(name='peta')
+    #peta
