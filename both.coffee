@@ -1,5 +1,18 @@
+@petas = [
+    'hutan_desa'
+    'iuphhk_re'
+    'iuphhk_ha'
+    'iuphhk_ht'
+]
+
 Router.configure
     layoutTemplate: 'layout'
 
 Router.route '/',
-    action: -> this.render 'peta'
+    action: -> this.render 'home'
+
+makeBoth = (i) ->
+    Router.route '/' + i,
+        action: -> this.render i
+
+makeBoth i for i in petas

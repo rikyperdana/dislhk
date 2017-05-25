@@ -12,10 +12,11 @@ template(name='menu')
             li: a Register
             li: a Logout
     ul.fixed.side-nav
-        li: a Hutan Desa
-        li: a IUPHHK HA
-        li: a IUPHHK HT
-        li: a IUPHHK RE
+        each val in menus
+            li: a(href=val)= val
 
-template(name='peta')
-    #peta
+template(name='home'): h4.right Beranda
+template(name='hutan_desa'): #peta
+template(name='iuphhk_re'): #peta
+template(name='iuphhk_ha'): #peta
+template(name='iuphhk_ht'): #peta
