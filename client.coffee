@@ -8,6 +8,24 @@ if Meteor.isClient
         map.setView [0.5, 101.44], 8
         tile = L.tileLayer.provider 'OpenStreetMap.DE'
         tile.addTo map
+
+        highlightFeature = (e) ->
+            e.target.setStyle
+                weight: 5
+                color: '#666'
+                dashArray: ''
+                fillOpacity: 0.7
+            e.target.bringToFront()
+        resetHighlight = (e) ->
+            geojson.resetStyle e.target
+        zoomToFeature = (e) ->
+            map.fitBounds e.target.getBounds()
+        onEachFeature = (feature, layer) ->
+            layer.on
+                mouseover: highlightFeature
+                mouseout: resetHighlight
+                click: zoomToFeature
+
         props = []
         getColor = (prop) ->
             colorGen = '#'+Math.random().toString(16).substr(-6)
@@ -19,6 +37,7 @@ if Meteor.isClient
                     label: prop
                     color: colorGen
                 colorGen
+
         style = (feature) ->
             fillColor: getColor feature.properties[labeling]
             weight: 2
@@ -26,8 +45,12 @@ if Meteor.isClient
             color: 'white'
             dashArray: '3'
             fillOpacity: 0.7
-        geojson = L.geoJson.ajax 'maps/' + i + '.geojson', style: style
+
+        geojson = L.geoJson.ajax 'maps/' + i + '.geojson',
+            style: style
+            onEachFeature: onEachFeature
         geojson.addTo map
+
         legend = L.control position: 'bottomright'
         legend.onAdd = ->
             div = L.DomUtil.create 'div', 'info legend'
