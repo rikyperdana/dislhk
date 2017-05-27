@@ -26,7 +26,7 @@ if Meteor.isClient
             color: 'white'
             dashArray: '3'
             fillOpacity: 0.7
-        geojson = L.geoJson.ajax 'maps/'+i+'.geojson', style: style
+        geojson = L.geoJson.ajax 'maps/' + i + '.geojson', style: style
         geojson.addTo map
         legend = L.control position: 'bottomright'
         legend.onAdd = ->
@@ -37,6 +37,6 @@ if Meteor.isClient
         legend.addTo map
 
     Template.hutan_desa.onRendered -> makeMap 'hutan_desa', 'SK'
-    Template.iuphhk_re.onRendered -> makeMap 'iuphhk_re'
-    Template.iuphhk_ha.onRendered -> makeMap 'iuphhk_ha'
-    Template.iuphhk_ht.onRendered -> makeMap 'iuphhk_ht'
+    Template.iuphhk_re.onRendered -> makeMap 'iuphhk_re', 'Pemilik'
+    Template.iuphhk_ha.onRendered -> makeMap 'iuphhk_ha', 'NAMA_PERUS'
+    Template.iuphhk_ht.onRendered -> makeMap 'iuphhk_ht', 'PERUSAHAAN'
