@@ -3,7 +3,7 @@ if Meteor.isClient
     Template.menu.helpers
         menus: -> petas
 
-    makeMap = (i, labeling) ->
+    makeMap = (peta, labeling) ->
         map = L.map 'peta', zoomControl: false
         map.setView [0.5, 101.44], 8
         tile = L.tileLayer.provider 'OpenStreetMap.DE'
@@ -29,17 +29,17 @@ if Meteor.isClient
             dashArray: '3'
             fillOpacity: 0.7
 
-        highlightFeature = (e) ->
-            e.target.setStyle
+        highlightFeature = (event) ->
+            event.target.setStyle
                 weight: 5
                 color: '#666'
                 dashArray: ''
                 fillOpacity: 0.7
-            e.target.bringToFront()
-        resetHighlight = (e) ->
-            geojson.resetStyle e.target
-        zoomToFeature = (e) ->
-            map.fitBounds e.target.getBounds()
+            event.target.bringToFront()
+        resetHighlight = (event) ->
+            geojson.resetStyle event.target
+        zoomToFeature = (event) ->
+            map.fitBounds event.target.getBounds()
         onEachFeature = (feature, layer) ->
             layer.on
                 mouseover: highlightFeature
@@ -52,7 +52,7 @@ if Meteor.isClient
                     content += '<b>Data ' + key + '</b>' + ': ' + val + '<br/>'
                 content
 
-        geojson = L.geoJson.ajax 'maps/' + i + '.geojson',
+        geojson = L.geoJson.ajax 'maps/' + peta + '.geojson',
             style: style
             onEachFeature: onEachFeature
         geojson.addTo map
