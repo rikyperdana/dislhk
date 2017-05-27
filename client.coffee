@@ -26,8 +26,15 @@ if Meteor.isClient
             color: 'white'
             dashArray: '3'
             fillOpacity: 0.7
-        data = L.geoJson.ajax 'maps/'+i+'.geojson', style: style
-        data.addTo map
+        geojson = L.geoJson.ajax 'maps/'+i+'.geojson', style: style
+        geojson.addTo map
+        legend = L.control position: 'bottomright'
+        legend.onAdd = ->
+            div = L.DomUtil.create 'div', 'info legend'
+            labelAdd = -> div.innerHTML += i.label + '<br/>' for i in props
+            setTimeout labelAdd, 3000
+            div
+        legend.addTo map
 
     Template.hutan_desa.onRendered -> makeMap 'hutan_desa', 'SK'
     Template.iuphhk_re.onRendered -> makeMap 'iuphhk_re'
