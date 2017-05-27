@@ -26,7 +26,11 @@ if Meteor.isClient
                 mouseout: resetHighlight
                 click: zoomToFeature
             layer.bindPopup ->
-                '<b>Nama Data:</b> ' + feature.properties[labeling] + '<br/>'
+                content = ''
+                for key, val of feature.properties
+                    console.log key, val
+                    content += '<b>Data ' + key + '</b>' + ': ' + val + '<br/>'
+                content
 
         props = []
         getColor = (prop) ->
