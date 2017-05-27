@@ -25,6 +25,8 @@ if Meteor.isClient
                 mouseover: highlightFeature
                 mouseout: resetHighlight
                 click: zoomToFeature
+            layer.bindPopup ->
+                '<b>Nama Data:</b> ' + feature.properties[labeling] + '<br/>'
 
         props = []
         getColor = (prop) ->
@@ -54,7 +56,10 @@ if Meteor.isClient
         legend = L.control position: 'bottomright'
         legend.onAdd = ->
             div = L.DomUtil.create 'div', 'info legend'
-            labelAdd = -> div.innerHTML += i.label + '<br/>' for i in props
+            labelAdd = ->
+                div.innerHTML +=
+                    '<i style="background:'+i.color+'"></i>' +
+                    i.label + '<br/>' for i in props
             setTimeout labelAdd, 3000
             div
         legend.addTo map
