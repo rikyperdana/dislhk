@@ -1,4 +1,6 @@
 @petas = []
+
+# generated with update.sh
 petas.push "bengkalis_apl"
 petas.push "bengkalis_hl"
 petas.push "bengkalis_hp"

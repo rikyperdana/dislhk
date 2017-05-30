@@ -1,3 +1,6 @@
+# Copy your geojson files to ./public/maps
+# Run this shell with ./update.sh
+
 for i in $(ls ./public/maps); do
     sed --in-place '/peta/d' ./view.jade
     sed --in-place '/onRendered/d' ./client.coffee

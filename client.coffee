@@ -84,6 +84,7 @@ if Meteor.isClient
         control = L.control.layers baseMaps, overlayMaps, options
         control.addTo map
 
+    # generated with update.sh
     Template.bengkalis_apl.onRendered -> makeMap "bengkalis_apl", "F_Prbhn"
     Template.bengkalis_hl.onRendered -> makeMap "bengkalis_hl", "F_Prbhn"
     Template.bengkalis_hp.onRendered -> makeMap "bengkalis_hp", "F_Prbhn"
