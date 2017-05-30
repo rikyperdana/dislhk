@@ -80,26 +80,32 @@ if Meteor.isClient
         control = L.control.layers baseMaps, overlayMaps, options
         control.addTo map
 
+
+
+    mapFilter = (category) ->
+        list = _.filter petas, (peta) -> peta.includes category
+        _.map list, (item) -> item.toUpperCase()
+
     Template.menu.helpers
         menus: -> _.map petas, (menu) -> menu.toUpperCase()
         
-        bengkalis: -> _.filter petas, (peta) -> peta.includes 'bengkalis'
-        dumai: -> _.filter petas, (peta) -> peta.includes 'dumai'
-        inhil: -> _.filter petas, (peta) -> peta.includes 'inhil'
-        inhu: -> _.filter petas, (peta) -> peta.includes 'inhu'
-        kampar: -> _.filter petas, (peta) -> peta.includes 'kampar'
-        kuansing: -> _.filter petas, (peta) -> peta.includes 'kuansing'
-        meranti: -> _.filter petas, (peta) -> peta.includes 'meranti'
-        pekanbaru: -> _.filter petas, (peta) -> peta.includes 'pekanbaru'
-        pelalawan: -> _.filter petas, (peta) -> peta.includes 'pelalawan'
-        rohil: -> _.filter petas, (peta) -> peta.includes 'rohil'
-        rohul: -> _.filter petas, (peta) -> peta.includes 'rohul'
-        siak: -> _.filter petas, (peta) -> peta.includes 'siak'
+        bengkalis: -> mapFilter 'bengkalis'
+        dumai: -> mapFilter 'dumai'
+        inhil: -> mapFilter 'inhil'
+        inhu: -> mapFilter 'inhu'
+        kampar: -> mapFilter 'kampar'
+        kuansing: -> mapFilter 'kuansing'
+        meranti: -> mapfilter 'meranti'
+        pekanbaru: -> mapFilter 'pekanbaru'
+        pelalawan: -> mapFilter 'pelalawan'
+        rohil: -> mapFilter 'rohil'
+        rohul: -> mapFilter 'rohul'
+        siak: -> mapFilter 'siak'
         
-        apl: -> _.filter petas, (peta) -> peta.includes 'apl'
-        hl: -> _.filter petas, (peta) -> peta.includes 'hl'
-        hp: -> _.filter petas, (peta) -> peta.includes 'hp'
-        hpt: -> _.filter petas, (peta) -> peta.includes 'hpt'
-        ksa: -> _.filter petas, (peta) -> peta.includes 'ksa'
+        apl: -> mapFilter 'apl'
+        hl: -> mapFilter 'hl'
+        hp: -> mapFilter 'hp'
+        hpt: -> mapFilter 'hpt'
+        ksa: -> mapFilter 'ksa'
 
 
