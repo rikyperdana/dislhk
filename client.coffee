@@ -4,11 +4,6 @@ if Meteor.isClient
         menus: -> petas
 
     makeMap = (peta, labeling) ->
-        map = L.map 'peta', zoomControl: false
-        map.setView [0.5, 101.44], 8
-        tile = L.tileLayer.provider 'OpenStreetMap.DE'
-        tile.addTo map
-
         props = []
         getColor = (prop) ->
             colorGen = '#'+Math.random().toString(16).substr(-6)
@@ -55,7 +50,14 @@ if Meteor.isClient
         geojson = L.geoJson.ajax 'maps/' + peta + '.geojson',
             style: style
             onEachFeature: onEachFeature
-        geojson.addTo map
+
+        tile = L.tileLayer.provider 'OpenStreetMap.DE'
+
+        map = L.map 'peta',
+            center: [0.5, 101.44]
+            zoom: 8
+            zoomControl: false
+            layers: [tile, geojson]
 
         legend = L.control position: 'bottomright'
         legend.onAdd = ->
@@ -67,6 +69,19 @@ if Meteor.isClient
             setTimeout labelAdd, 3000
             div
         legend.addTo map
+
+        locate = L.control.locate position: 'topright'
+        locate.addTo map
+
+        baseMaps =
+            'Jalan': L.tileLayer.provider 'OpenStreetMap.DE'
+            'Topografi': L.tileLayer.provider 'OpenTopoMap'
+        overlayMaps = 
+            'Data': geojson
+        options =
+            collapsed: false
+        layers = L.control.layers baseMaps, overlayMaps, options
+        layers.addTo map
 
     Template.hutan_desa.onRendered -> makeMap 'hutan_desa', 'SK'
     Template.iuphhk_re.onRendered -> makeMap 'iuphhk_re', 'Pemilik'
