@@ -87,7 +87,7 @@ if Meteor.isClient
         _.map list, (item) -> item.toUpperCase()
 
     Template.menu.helpers
-        menus: -> _.map petas, (menu) -> menu.toUpperCase()
+        menus: -> _.map petas, (menu) -> menu.toUpperCase().replace '_', ' '
         
         bengkalis: -> mapFilter 'bengkalis'
         dumai: -> mapFilter 'dumai'
