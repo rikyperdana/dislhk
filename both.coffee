@@ -1,10 +1,3 @@
-@petas = [
-    'hutan_desa'
-    'iuphhk_re'
-    'iuphhk_ha'
-    'iuphhk_ht'
-]
-
 Router.configure
     layoutTemplate: 'layout'
 
