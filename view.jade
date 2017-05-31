@@ -13,6 +13,71 @@ template(name='menu')
             li: a Logout
     ul.fixed.side-nav
         li.grey.darken-2: a: b.white-text PILIHAN PETA
-        each val in menus
-            li: a(href=val)= val
+
+        li.grey.lighten-3: ul.collapsible: li
+            .collapsible-header SEMUA PETA
+            each val in menus
+                a.collapsible-body(href=val)= val
+
+        li.grey.lighten-3: ul.collapsible: li
+            .collapsible-header BENGKALIS
+            each val in bengkalis
+                a.collapsible-body(href=val)= val
+
+        li.grey.lighten-3: ul.collapsible: li
+            .collapsible-header DUMAI
+            each val in dumai
+                a.collapsible-body(href=val)= val
+
+        li.grey.lighten-3: ul.collapsible: li
+            .collapsible-header INHIL
+            each val in inhil
+                a.collapsible-body(href=val)= val
+
+        li.grey.lighten-3: ul.collapsible: li
+            .collapsible-header INHU
+            each val in inhu
+                a.collapsible-body(href=val)= val
+
+        li.grey.lighten-3: ul.collapsible: li
+            .collapsible-header KAMPAR
+            each val in kampar
+                a.collapsible-body(href=val)= val
+
+        li.grey.lighten-3: ul.collapsible: li
+            .collapsible-header KUANSING
+            each val in kuansing
+                a.collapsible-body(href=val)= val
+
+        li.grey.lighten-3: ul.collapsible: li
+            .collapsible-header MERANTI
+            each val in meranti
+                a.collapsible-body(href=val)= val
+
+        li.grey.lighten-3: ul.collapsible: li
+            .collapsible-header PEKANBARU
+            each val in pekanbaru
+                a.collapsible-body(href=val)= val
+
+        li.grey.lighten-3: ul.collapsible: li
+            .collapsible-header PELALAWAN
+            each val in pelalawan
+                a.collapsible-body(href=val)= val
+
+        li.grey.lighten-3: ul.collapsible: li
+            .collapsible-header ROKAN HILIR
+            each val in rohil
+                a.collapsible-body(href=val)= val
+
+        li.grey.lighten-3: ul.collapsible: li
+            .collapsible-header ROKAN HULU
+            each val in rohul
+                a.collapsible-body(href=val)= val
+
+        li.grey.lighten-3: ul.collapsible: li
+            .collapsible-header SIAK
+            each val in siak
+                a.collapsible-body(href=val)= val
+
+
         li: a#update Update Maps

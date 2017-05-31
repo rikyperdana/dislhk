@@ -84,7 +84,7 @@ if Meteor.isClient
 
     mapFilter = (category) ->
         list = _.filter petas, (peta) -> peta.includes category
-        _.map list, (item) -> item.toUpperCase()
+        _.map list, (item) -> item.toUpperCase().replace '_', ' '
 
     Template.menu.helpers
         menus: -> _.map petas, (menu) -> menu.toUpperCase().replace '_', ' '
@@ -111,3 +111,6 @@ if Meteor.isClient
     Template.menu.events
         'click #update': ->
             Meteor.call 'updatePetas'
+
+    Template.menu.onRendered ->
+        $('.collapsible').collapsible()
