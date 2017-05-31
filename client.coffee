@@ -108,4 +108,6 @@ if Meteor.isClient
         hpt: -> mapFilter 'hpt'
         ksa: -> mapFilter 'ksa'
 
-
+    Template.menu.events
+        'click #update': ->
+            Meteor.call 'updatePetas'

@@ -12,5 +12,7 @@ template(name='menu')
             li: a Register
             li: a Logout
     ul.fixed.side-nav
+        li.grey.darken-2: a: b.white-text PILIHAN PETA
         each val in menus
             li: a(href=val)= val
+        li: a#update Update Maps
